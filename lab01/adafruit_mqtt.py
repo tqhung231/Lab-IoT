@@ -6,7 +6,13 @@ from Adafruit_IO import MQTTClient
 class Adafruit_MQTT:
     AIO_FEED_IDs = ["button1", "button2"]
     AIO_USERNAME = "tqhung231"
-    AIO_KEY = "aio_hSTD28Ft6JP4rmstd4f1KnbSwIrM"
+    # Check if key.txt exists
+    try:
+        with open("key.txt", "r") as f:
+            AIO_KEY = f.read()
+    except:
+        # Dummy key
+        AIO_KEY = "aio_hSTD28Ft6JP4rmstd4f1KnbSwIrM"
 
     def connected(self, client):
         print("Connected ...")
